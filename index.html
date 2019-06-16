@@ -53,6 +53,10 @@
                 }
                 return;
             }
+            if(event.data == ' '){
+                str_p.innerHTML += "<span>&nbsp;</span>";
+            }
+            else
             str_p.innerHTML += "<span>" + event.data + "</span>";
             str_num.innerHTML += "<span>" + (str.length - 1) + "</span>";
         }
