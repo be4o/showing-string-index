@@ -23,17 +23,24 @@
 
         .container {
             text-align: center;
-            margin-top:100px;
+            margin: 100px auto;
+            width: 90%;
+            overflow: auto;
+            white-space: nowrap;
+            
         }
+        
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <input type="text" name="str" id="str" oninput="txtChange(event)" placeholder="type a string">
+        <input type="text" name="str" id="str" oninput="txtChange(event)" onpaste="txtPaste(event)"  placeholder="type a string">
+        
         <p id="str_p"></p>
         <p id="str_num"></p>
+        
         <p id="len"></p>
     </div>
 
@@ -43,22 +50,32 @@
             var str_p = document.getElementById('str_p');
             var str_num = document.getElementById('str_num');
             document.getElementById("len").innerText = "Length: " + str.length;
-            if (str == "") {
-                str_p.innerText = str_num.innerText = "";
-            }
-            if (event.data === null) {
-                if (str_p.childElementCount) {
-                    str_p.removeChild(str_p.lastChild);
-                    str_num.removeChild(str_num.lastChild);
-                }
-                return;
-            }
-            if(event.data == ' '){
-                str_p.innerHTML += "<span>&nbsp;</span>";
-            }
-            else
-            str_p.innerHTML += "<span>" + event.data + "</span>";
-            str_num.innerHTML += "<span>" + (str.length - 1) + "</span>";
+            str_p.innerText = str_num.innerText = "";
+            
+//             if (str == "") {
+//                 str_p.innerText = str_num.innerText = "";
+//                 return;
+//             }
+//             if (event.data === null) {
+//                 if (str_p.childElementCount) {
+//                     str_p.removeChild(str_p.lastChild);
+//                     str_num.removeChild(str_num.lastChild);
+//                 }
+//                 return;
+//             }
+//             if(event.data == ' '){
+//                 str_p.innerHTML += "<span>&nbsp;</span>";
+//             }
+//             else
+//             str_p.innerHTML += "<span>" + event.data + "</span>";
+//             str_num.innerHTML += "<span>" + (str.length - 1) + "</span>";
+            
+            //after undating
+           for(let i=0; i<str.length; i++)
+           {
+           		str_p.innerHTML += "<span>" + str[i] + "</span>";
+             	str_num.innerHTML += "<span>" + (i) + "</span>";
+           }
         }
     </script>
 </body>
